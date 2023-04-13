@@ -433,9 +433,11 @@ export default {
         : 2
     },
     priceFormat() {
-      return this.indicator.options.priceFormat
-        ? this.indicator.options.priceFormat.type
-        : 'price'
+      return (
+        (this.indicator.options.priceFormat &&
+          this.indicator.options.priceFormat.type) ||
+        'price'
+      )
     },
     availableScales() {
       return getChartScales(

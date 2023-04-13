@@ -4,7 +4,11 @@
     :class="[split && 'pane-header--split']"
     @dblclick="maximizePane"
   >
-    <div class="pane-header__name pane-overlay" @dblclick="renamePane">
+    <div
+      v-if="showName"
+      class="pane-header__name pane-overlay"
+      @dblclick="renamePane"
+    >
       <slot name="title">
         {{ name }}
       </slot>
@@ -125,6 +129,10 @@ import dialogService from '@/services/dialogService'
       default: null
     },
     showSearch: {
+      type: Boolean,
+      default: true
+    },
+    showName: {
       type: Boolean,
       default: true
     },
